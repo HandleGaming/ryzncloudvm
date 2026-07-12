@@ -1,0 +1,243 @@
+#!/bin/bash
+# ===========================================================
+# RyznCloud Terminal Control Panel
+# Mode By - RyznCloud Team
+# ===========================================================
+
+# --- COLORS ---
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+CYAN='\033[1;36m'
+BLUE='\033[1;34m'
+PURPLE='\033[1;35m'
+WHITE='\033[1;37m'
+NC='\033[0m'
+
+# ===================== AUTO COLORS =====================
+COLORS=(
+'\033[1;31m' '\033[1;32m' '\033[1;33m' '\033[1;34m'
+'\033[1;35m' '\033[1;36m'
+'\033[38;5;208m' '\033[38;5;205m' '\033[38;5;51m'
+)
+NC='\033[0m'
+BOLD='\033[1m'
+GRAY='\033[38;5;245m'
+
+rand_color(){ echo -e "${COLORS[$RANDOM % ${#COLORS[@]}]}"; }
+pause(){ echo -e "${GRAY}"; read -p "Press Enter to continue..." x; echo -e "${NC}"; }
+
+# ===================== BANNER =====================
+banner(){
+clear
+C1=$(rand_color); C2=$(rand_color); C3=$(rand_color)
+echo -e "${C1}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo
+echo -e "${C2}  ██████╗ ██╗   ██╗███████╗███╗   ██╗ ██████╗██╗      ██████╗ ██╗   ██╗██████╗ ${NC}"
+echo -e "${C2}  ██╔══██╗╚██╗ ██╔╝╚══███╔╝████╗  ██║██╔════╝██║     ██╔═══██╗██║   ██║██╔══██╗${NC}"
+echo -e "${C2}  ██████╔╝ ╚████╔╝   ███╔╝ ██╔██╗ ██║██║     ██║     ██║   ██║██║   ██║██║  ██║${NC}"
+echo -e "${C2}  ██╔══██╗  ╚██╔╝   ███╔╝  ██║╚██╗██║██║     ██║     ██║   ██║██║   ██║██║  ██║${NC}"
+echo -e "${C2}  ██║  ██║   ██║   ███████╗██║ ╚████║╚██████╗███████╗╚██████╔╝╚██████╔╝██████╔╝${NC}"
+echo -e "${C2}  ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═══╝ ╚═════╝╚══════╝ ╚═════╝  ╚═════╝ ╚═════╝ ${NC}"
+echo
+echo -e "${C3}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "              ${BOLD}RyznCloud - Cloud Solutions${NC}" ${C2}2026
+echo -e "${C1}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo
+}
+
+# ===================== CLOUD MENU =====================
+cloud_menu(){
+while true; do banner
+echo -e "${C3}────────────── CLOUD SERVICES ──────────────${NC}"
+echo -e "${YELLOW} 1)${WHITE} Deploy Cloud Server"
+echo -e "${YELLOW} 2)${WHITE} Manage Instances"
+echo -e "${YELLOW} 3)${WHITE} Cloud Backup"
+echo -e "${YELLOW} 4)${WHITE} Load Balancer"
+echo -e "${YELLOW} 5)${WHITE} Firewall Rules"
+echo -e "${YELLOW} 6)${WHITE} Back"
+echo -e "${C3}─────────────────────────────────────────────${NC}"
+read -p "Select → " c
+
+case $c in
+ 1) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/deploy.sh) ;;
+ 2) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/manage.sh) ;;
+ 3) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/backup.sh) ;;
+ 4) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/loadbalancer.sh) ;;
+ 5) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/firewall.sh) ;;
+ 6) break;;
+ *) echo -e "${RED}Invalid Option${NC}"; pause;;
+esac
+done
+}
+
+# ===================== PANEL MENU =====================
+panel_menu(){
+while true; do banner
+echo -e "${C3}────────────── PANEL MENU ──────────────${NC}"
+echo -e "${YELLOW} 1)${WHITE} RyznPanel (Custom)"
+echo -e "${YELLOW} 2)${WHITE} Pterodactyl Panel"
+echo -e "${YELLOW} 3)${WHITE} Jexactyl v3"
+echo -e "${YELLOW} 4)${WHITE} Jexpanel v4"
+echo -e "${YELLOW} 5)${WHITE} Dashboard v3"
+echo -e "${YELLOW} 6)${WHITE} Dashboard v4"
+echo -e "${YELLOW} 7)${WHITE} Payment Gateway"
+echo -e "${YELLOW} 8)${WHITE} CtrlPanel"
+echo -e "${YELLOW} 9)${WHITE} CPanel"
+echo -e "${YELLOW}10)${WHITE} Tools Panel (External)"
+echo -e "${YELLOW}11)${WHITE} Back"
+echo -e "${C3}─────────────────────────────────────────${NC}"
+read -p "Select → " p
+
+case $p in
+ 1) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/ryznpanel.sh) ;;
+ 2) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/pterodactyl.sh) ;;
+ 3) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/jexactyl.sh) ;;
+ 4) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/jexpanel.sh) ;;
+ 5) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/dashboard3.sh) ;;
+ 6) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/dashboard4.sh) ;;
+ 7) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/paymenter.sh) ;;
+ 8) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/ctrlpanel.sh) ;;
+ 9) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/cpanel.sh) ;;
+ 10) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/tpanel.sh) ;;
+ 11) break;;
+ *) echo -e "${RED}Invalid Option${NC}"; pause;;
+esac
+done
+}
+
+# ===================== TOOLS MENU =====================
+tools_menu(){
+while true; do banner
+echo -e "${BLUE}────────────── TOOLS MENU ──────────────${NC}"
+echo -e "${YELLOW} 1)${WHITE} Root Access"
+echo -e "${YELLOW} 2)${WHITE} Tailscale VPN"
+echo -e "${YELLOW} 3)${WHITE} Cloudflare DNS"
+echo -e "${YELLOW} 4)${WHITE} System Info"
+echo -e "${YELLOW} 5)${WHITE} VPS Run"
+echo -e "${YELLOW} 6)${WHITE} Port Forward"
+echo -e "${YELLOW} 7)${WHITE} RDP Installer"
+echo -e "${YELLOW} 8)${WHITE} Docker Manager"
+echo -e "${YELLOW} 9)${WHITE} Back"
+echo -e "${BLUE}────────────────────────────────────────${NC}"
+read -p "Select → " t
+
+case $t in
+ 1) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/root.sh) ;;
+ 2) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/tailscale.sh) ;;
+ 3) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/cloudflare.sh) ;;
+ 4) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/system.sh) ;;
+ 5) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/vps.sh) ;;
+ 6) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/portforward.sh) ;;
+ 7) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/rdp.sh) ;;
+ 8) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/docker.sh) ;;
+ 9) break;;
+ *) echo -e "${RED}Invalid${NC}"; pause;;
+esac
+done
+}
+
+# ===================== THEME MENU =====================
+theme_menu(){
+while true; do banner
+echo -e "${PURPLE}────────────── THEME MENU ──────────────${NC}"
+echo -e "${YELLOW} 1)${WHITE} RyznCloud Theme"
+echo -e "${YELLOW} 2)${WHITE} Blueprint Theme"
+echo -e "${YELLOW} 3)${WHITE} Change Theme"
+echo -e "${YELLOW} 4)${WHITE} Uninstall Theme"
+echo -e "${YELLOW} 5)${WHITE} Back"
+echo -e "${PURPLE}────────────────────────────────────────${NC}"
+read -p "Select → " th
+
+case $th in
+ 1) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/themes/ryzncloud.sh) ;;
+ 2) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/themes/blueprint.sh) ;;
+ 3) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/themes/change.sh) ;;
+ 4) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/themes/uninstall.sh) ;;
+ 5) break;;
+ *) echo -e "${RED}Invalid${NC}"; pause;;
+esac
+done
+}
+
+# ===================== WINGS MENU =====================
+wings_menu(){
+while true; do banner
+echo -e "${GREEN}────────────── WINGS MENU ──────────────${NC}"
+echo -e "${YELLOW} 1)${WHITE} Install Wings"
+echo -e "${YELLOW} 2)${WHITE} Configure Wings"
+echo -e "${YELLOW} 3)${WHITE} Wings Status"
+echo -e "${YELLOW} 4)${WHITE} Restart Wings"
+echo -e "${YELLOW} 5)${WHITE} Uninstall Wings"
+echo -e "${YELLOW} 6)${WHITE} Back"
+echo -e "${GREEN}────────────────────────────────────────${NC}"
+read -p "Select → " w
+
+case $w in
+ 1) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/wings/install.sh) ;;
+ 2) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/wings/configure.sh) ;;
+ 3) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/wings/status.sh) ;;
+ 4) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/wings/restart.sh) ;;
+ 5) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/wings/uninstall.sh) ;;
+ 6) break;;
+ *) echo -e "${RED}Invalid${NC}"; pause;;
+esac
+done
+}
+
+# ===================== SECURITY MENU =====================
+security_menu(){
+while true; do banner
+echo -e "${RED}────────────── SECURITY MENU ──────────────${NC}"
+echo -e "${YELLOW} 1)${WHITE} SSH Hardening"
+echo -e "${YELLOW} 2)${WHITE} Fail2ban Setup"
+echo -e "${YELLOW} 3)${WHITE} SSL Certificate"
+echo -e "${YELLOW} 4)${WHITE} Security Audit"
+echo -e "${YELLOW} 5)${WHITE} Back"
+echo -e "${RED}────────────────────────────────────────${NC}"
+read -p "Select → " s
+
+case $s in
+ 1) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/security/ssh.sh) ;;
+ 2) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/security/fail2ban.sh) ;;
+ 3) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/security/ssl.sh) ;;
+ 4) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/security/audit.sh) ;;
+ 5) break;;
+ *) echo -e "${RED}Invalid${NC}"; pause;;
+esac
+done
+}
+
+# ===================== MAIN MENU =====================
+main_menu(){
+while true; do banner
+echo -e "${CYAN}═══════════════ RYZNCLOUD MENU ═══════════════${NC}"
+echo -e "${YELLOW} 1)${WHITE} Cloud Services"
+echo -e "${YELLOW} 2)${WHITE} Panel Management"
+echo -e "${YELLOW} 3)${WHITE} Wings Management"
+echo -e "${YELLOW} 4)${WHITE} Tools & Utilities"
+echo -e "${YELLOW} 5)${WHITE} Theme Manager"
+echo -e "${YELLOW} 6)${WHITE} Security"
+echo -e "${YELLOW} 7)${WHITE} System Information"
+echo -e "${YELLOW} 8)${WHITE} External Tools"
+echo -e "${YELLOW} 9)${WHITE} Exit"
+echo -e "${CYAN}════════════════════════════════════════════════${NC}"
+read -p "Select → " c
+
+case $c in
+ 1) cloud_menu ;;
+ 2) panel_menu ;;
+ 3) wings_menu ;;
+ 4) tools_menu ;;
+ 5) theme_menu ;;
+ 6) security_menu ;;
+ 7) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/system_info.sh) ;;
+ 8) bash <(curl -s https://raw.githubusercontent.com/ryzncloud/scripts/main/external.sh) ;;
+ 9) echo -e "${GREEN}Thank you for using RyznCloud!${NC}"; exit ;;
+ *) echo -e "${RED}Invalid${NC}"; pause ;;
+esac
+done
+}
+
+# ===================== START =====================
+main_menu
